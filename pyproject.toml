@@ -26,3 +26,6 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/blackjack_crew"]
+
+[project.scripts]
+blackjack-crew = "blackjack_crew.cli:app"

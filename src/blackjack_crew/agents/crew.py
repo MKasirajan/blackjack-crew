@@ -12,15 +12,13 @@ from — keeping CrewAI-specific types behind a clean boundary.
 
 from __future__ import annotations
 
-import random
 import re
 from dataclasses import dataclass
 from typing import Literal
 
 from crewai import Agent, Crew, Task
 
-from blackjack_crew.agents.factory import build_agents
-from blackjack_crew.agents.tools import set_rng
+from blackjack_crew.agents.factory import build_agents 
 from blackjack_crew.game.state import MAX_CARDS_PER_PLAYER, PlayerType
 
 Decision = Literal["hit", "stand"]
@@ -50,14 +48,8 @@ class BlackjackCrew:
     calls (the game state lives in `engine.py`).
     """
 
-    def __init__(self, rng: random.Random | None = None) -> None:
-        """Construct the crew with all four agents configured.
-
-        Args:
-            rng: Optional seeded RNG; injected into the card-drawing tool
-                for deterministic gameplay. None for normal gameplay.
-        """
-        set_rng(rng)
+    def __init__(self) -> None:
+        """Construct the crew with all four agents configured.""" 
         self._agents = build_agents()
         # Hold a Crew object so the construct exists for inspection/debug,
         # even though we drive task execution directly per turn.
